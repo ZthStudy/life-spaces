@@ -1,5 +1,8 @@
 <template>
-  <SideBar></SideBar>
+  <div class="headband"></div>
+  <div class="container">
+    <SideBar></SideBar>
+  </div>
 </template>
 
 <script lang="ts">
@@ -9,20 +12,31 @@ import SideBar from "./components/SideBar/index.vue";
 export default defineComponent({
   name: "App",
   components: {
-    SideBar
+    SideBar,
   },
 });
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
+  background: $skin;
+  line-height: 1.5;
+}
+</style>
+
+<style scoped>
+.container {
   width: 1190px;
   margin: 0 auto;
+}
+.headband {
+  background: #222;
+  height: 3px;
 }
 </style>
