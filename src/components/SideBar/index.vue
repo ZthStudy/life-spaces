@@ -1,25 +1,30 @@
 <template>
-  <div class="side">
+  <aside>
     <h1>Life Spaces</h1>
-  </div>
+    <Nav></Nav>
+  </aside>
 </template>
 <script lang='ts'>
 import { defineComponent } from "vue";
+import Nav from "./Nav.vue";
 export default defineComponent({
   name: "SideBar",
-  components: {},
+  components: { Nav },
   props: [],
   setup: () => {},
 });
 </script>
 <style lang="scss" scoped>
-.side {
+aside {
   width: 20%;
-  header {
+  h1 {
     width: 100%;
-    height: 50px;
-    line-height: 50px;
+    padding: 20px 0;
     text-align: center;
+    background: $textture;
+    color: #fff;
+    font-size: 1.375em;
+    font-weight: normal;
   }
 }
 </style>

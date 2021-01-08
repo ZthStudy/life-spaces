@@ -6,7 +6,6 @@
     "build": "vuedx-typecheck . && vite build"
   },
   "dependencies": {
-    "ant-design-vue": "^2.0.0-rc.7",
     "vue": "^3.0.5"
   },
   "devDependencies": {
