@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-01-07 09:56:08
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-01-08 10:48:29
+ * @LastEditTime: 2021-01-13 11:21:52
 -->
 <template>
   <ul class="parent">
@@ -14,29 +14,30 @@
       :class="{ active: clickIndex === parentIndex }"
       @click="parentClick(parentIndex)"
     >
-      <svg class="icon" aria-hidden="true">
-        <use :xlink:href="`#${parent.icon}`"></use>
-      </svg>
+      <svg-icon :icon-name="parent.icon"></svg-icon>
       {{ parent.label }}
-      <svg v-if="parent.children.length" class="icon arrow" aria-hidden="true">
-        <use :xlink:href="`#${arrow}`"></use>
-      </svg>
-      <ul>
-        <li v-for="child in parent.children" :key="child.label">
-          <svg class="icon" aria-hidden="true">
-            <use :xlink:href="`#${child.icon}`"></use>
-          </svg>
-          {{ child.label }}
-        </li>
-      </ul>
+      <svg-icon
+        v-if="isHasChildren(parent)"
+        :icon-name="arrow"
+        class-name="arrow"
+      ></svg-icon>
+      <div v-if="isHasChildren(parent)">
+        <ul v-show="childsFold">
+          <li v-for="child in parent.children" :key="child.label">
+            <svg-icon :icon-name="child.icon"></svg-icon>
+            {{ child.label }}
+          </li>
+        </ul>
+      </div>
     </li>
   </ul>
 </template>
 <script lang='ts'>
 import { defineComponent, ref } from "vue";
+import SvgIcon from "@/components/SvgIcon.vue";
 export default defineComponent({
   name: "Nav",
-  components: {},
+  components: { SvgIcon },
   props: [],
   setup: () => {
     const parentNavs = [
@@ -75,8 +76,26 @@ export default defineComponent({
     const parentClick = (parentIndex: number) => {
       clickIndex.value = parentIndex;
     };
-    
-    return { parentNavs, clickIndex, parentClick, arrow };
+
+    interface defineNav {
+      label: string;
+      icon: string;
+      children?: defineNav[];
+    }
+    const isHasChildren = (parent: defineNav) => {
+      return parent?.children?.length || false;
+    };
+
+    const childsFold = ref(false);
+
+    return {
+      parentNavs,
+      clickIndex,
+      parentClick,
+      arrow,
+      isHasChildren,
+      childsFold,
+    };
   },
 });
 </script>
@@ -97,7 +116,7 @@ ul.parent {
       vertical-align: middle;
       margin-right: 3px;
     }
-    .icon.arrow{
+    .icon.arrow {
       float: right;
     }
   }

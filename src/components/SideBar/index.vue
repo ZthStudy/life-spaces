@@ -1,15 +1,15 @@
 <template>
   <aside>
     <h1>Life Spaces</h1>
-    <Nav></Nav>
+    <side-nav></side-nav>
   </aside>
 </template>
 <script lang='ts'>
 import { defineComponent } from "vue";
-import Nav from "./Nav.vue";
+import SideNav from "./SideNav.vue";
 export default defineComponent({
   name: "SideBar",
-  components: { Nav },
+  components: { SideNav },
   props: [],
   setup: () => {},
 });

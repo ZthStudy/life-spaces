@@ -1,7 +1,7 @@
 <template>
   <div class="headband"></div>
   <div class="container">
-    <SideBar></SideBar>
+    <side-bar></side-bar>
   </div>
 </template>
 
