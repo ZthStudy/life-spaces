@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-01-07 09:56:08
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-01-13 11:21:52
+ * @LastEditTime: 2021-01-15 13:33:18
 -->
 <template>
   <ul class="parent">
@@ -22,8 +22,12 @@
         class-name="arrow"
       ></svg-icon>
       <div v-if="isHasChildren(parent)">
-        <ul v-show="childsFold">
-          <li v-for="child in parent.children" :key="child.label">
+        <ul v-show="parent.fold">
+          <li
+            v-for="(child, childIndex) in parent.children"
+            :key="child.label"
+            @click.stop="childClick(parentIndex, childIndex)"
+          >
             <svg-icon :icon-name="child.icon"></svg-icon>
             {{ child.label }}
           </li>
@@ -40,7 +44,7 @@ export default defineComponent({
   components: { SvgIcon },
   props: [],
   setup: () => {
-    const parentNavs = [
+    const parentNavs = ref([
       {
         label: "前端",
         icon: "icon-mangguo",
@@ -54,27 +58,36 @@ export default defineComponent({
             icon: "icon-huolongguo",
           },
         ],
+        fold: true,
       },
       {
         label: "Node.js",
         icon: "icon-fanqie",
         children: [],
+        fold: true,
       },
       {
         label: "Life",
         icon: "icon-xigua",
         children: [],
+        fold: true,
       },
       {
         label: "Note",
         icon: "icon-ningmeng",
         children: [],
+        fold: true,
       },
-    ];
+    ]);
     const clickIndex = ref(0);
     const arrow = ref("icon-arrow-up");
     const parentClick = (parentIndex: number) => {
       clickIndex.value = parentIndex;
+      toggleChildsNav();
+      function toggleChildsNav() {
+        const curFold = parentNavs.value[parentIndex].fold;
+        parentNavs.value[parentIndex].fold = !curFold;
+      }
     };
 
     interface defineNav {
@@ -86,15 +99,17 @@ export default defineComponent({
       return parent?.children?.length || false;
     };
 
-    const childsFold = ref(false);
+    const childClick = () => {
+      return false;
+    };
 
     return {
       parentNavs,
       clickIndex,
       parentClick,
+      childClick,
       arrow,
       isHasChildren,
-      childsFold,
     };
   },
 });
@@ -104,6 +119,7 @@ ul.parent {
   background: #fff;
   text-align: left;
   padding-top: 20px;
+  user-select: none;
   li {
     padding: 5px 10px;
     cursor: pointer;
