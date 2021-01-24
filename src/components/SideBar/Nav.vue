@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-01-07 09:56:08
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-01-08 10:48:29
+ * @LastEditTime: 2021-01-24 20:05:19
 -->
 <template>
   <ul class="parent">
@@ -33,7 +33,7 @@
   </ul>
 </template>
 <script lang='ts'>
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 export default defineComponent({
   name: "Nav",
   components: {},
@@ -75,7 +75,6 @@ export default defineComponent({
     const parentClick = (parentIndex: number) => {
       clickIndex.value = parentIndex;
     };
-    
     return { parentNavs, clickIndex, parentClick, arrow };
   },
 });
@@ -85,6 +84,21 @@ ul.parent {
   background: #fff;
   text-align: left;
   padding-top: 20px;
+  @keyframes falldown {
+    0% {
+      opacity: 0;
+      transform: translateY(-280px);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(-140px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  animation: falldown 1s ease-out;
   li {
     padding: 5px 10px;
     cursor: pointer;
@@ -97,12 +111,16 @@ ul.parent {
       vertical-align: middle;
       margin-right: 3px;
     }
-    .icon.arrow{
+    .icon.arrow {
       float: right;
     }
   }
   li.active {
     background: $hover;
   }
+}
+ul.aniClass {
+  // opacity: 1;
+  // transform: translateY(0);
 }
 </style>
