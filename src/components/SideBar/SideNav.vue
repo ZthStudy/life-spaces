@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-01-07 09:56:08
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-01-15 13:33:18
+ * @LastEditTime: 2021-02-08 21:02:08
 -->
 <template>
   <ul class="parent">
@@ -89,7 +89,6 @@ export default defineComponent({
         parentNavs.value[parentIndex].fold = !curFold;
       }
     };
-
     interface defineNav {
       label: string;
       icon: string;
@@ -98,11 +97,9 @@ export default defineComponent({
     const isHasChildren = (parent: defineNav) => {
       return parent?.children?.length || false;
     };
-
     const childClick = () => {
       return false;
     };
-
     return {
       parentNavs,
       clickIndex,
