@@ -4,109 +4,45 @@
  * @Author: zhangtianhou
  * @Date: 2021-01-07 09:56:08
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-08 21:02:08
+ * @LastEditTime: 2021-02-10 17:44:35
 -->
 <template>
   <ul class="parent">
     <li
-      v-for="(parent, parentIndex) in parentNavs"
-      :key="parent.label"
-      :class="{ active: clickIndex === parentIndex }"
-      @click="parentClick(parentIndex)"
+      v-for="(item, index) in parent"
+      :key="item.label"
+      :class="{ active: clickParentIndex === index }"
+      @click="parentClick(item, index)"
     >
-      <svg-icon :icon-name="parent.icon"></svg-icon>
-      {{ parent.label }}
+      <svg-icon :icon-name="item.icon"></svg-icon>
+      {{ item.label }}
       <svg-icon
-        v-if="isHasChildren(parent)"
+        v-if="hasChildren(item)"
         :icon-name="arrow"
         class-name="arrow"
       ></svg-icon>
-      <div v-if="isHasChildren(parent)">
-        <ul v-show="parent.fold">
-          <li
-            v-for="(child, childIndex) in parent.children"
-            :key="child.label"
-            @click.stop="childClick(parentIndex, childIndex)"
-          >
-            <svg-icon :icon-name="child.icon"></svg-icon>
-            {{ child.label }}
-          </li>
-        </ul>
-      </div>
+      <child-nav :parent="item"></child-nav>
     </li>
   </ul>
 </template>
 <script lang='ts'>
 import { defineComponent, ref } from "vue";
 import SvgIcon from "@/components/SvgIcon.vue";
+import ChildNav from "./ChildNav.vue";
+import { useNav } from "./hooks";
 export default defineComponent({
   name: "Nav",
-  components: { SvgIcon },
+  components: { SvgIcon, ChildNav },
   props: [],
   setup: () => {
-    const parentNavs = ref([
-      {
-        label: "前端",
-        icon: "icon-mangguo",
-        children: [
-          {
-            label: "js",
-            icon: "icon-shuimitao",
-          },
-          {
-            label: "css",
-            icon: "icon-huolongguo",
-          },
-        ],
-        fold: true,
-      },
-      {
-        label: "Node.js",
-        icon: "icon-fanqie",
-        children: [],
-        fold: true,
-      },
-      {
-        label: "Life",
-        icon: "icon-xigua",
-        children: [],
-        fold: true,
-      },
-      {
-        label: "Note",
-        icon: "icon-ningmeng",
-        children: [],
-        fold: true,
-      },
-    ]);
-    const clickIndex = ref(0);
     const arrow = ref("icon-arrow-up");
-    const parentClick = (parentIndex: number) => {
-      clickIndex.value = parentIndex;
-      toggleChildsNav();
-      function toggleChildsNav() {
-        const curFold = parentNavs.value[parentIndex].fold;
-        parentNavs.value[parentIndex].fold = !curFold;
-      }
-    };
-    interface defineNav {
-      label: string;
-      icon: string;
-      children?: defineNav[];
-    }
-    const isHasChildren = (parent: defineNav) => {
-      return parent?.children?.length || false;
-    };
-    const childClick = () => {
-      return false;
-    };
+    const { parent, hasChildren, clickParentIndex, parentClick } = useNav();
     return {
-      parentNavs,
-      clickIndex,
+      parent,
+      clickParentIndex,
       parentClick,
-      childClick,
       arrow,
-      isHasChildren,
+      hasChildren,
     };
   },
 });
@@ -122,6 +58,9 @@ ul.parent {
     cursor: pointer;
     font-size: 14px;
     &:hover {
+      background: $hover;
+    }
+    &:visited {
       background: $hover;
     }
     .icon {
