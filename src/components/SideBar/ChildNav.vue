@@ -4,18 +4,22 @@
  * @Author: zhangtianhou
  * @Date: 2021-02-10 16:34:32
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-10 17:46:02
+ * @LastEditTime: 2021-02-11 10:58:22
 -->
 <template>
-  <div v-if="hasChildren(parent)">
+  <div v-if="hasChildren(parent)" class="pl10">
     <ul v-show="parent.fold">
       <li
         v-for="(child, index) in parent.children"
         :key="child.label"
-        :class="{ active: index === childClick }"
-        @click.stop="childClick(index)"
+        class="child"
+        :class="{
+          active:
+            index === clickChildIndex && clickParentIndex === parent.index,
+        }"
+        @click.stop="childClick(index, parent)"
       >
-        <svg-icon :icon-name="child.icon"></svg-icon>
+        <svg-icon :icon-name="child.icon" class-name="mr5"></svg-icon>
         {{ child.label }}
       </li>
     </ul>
@@ -29,11 +33,22 @@ export default defineComponent({
   name: "ChildNav",
   components: { SvgIcon },
   props: ["parent"],
-  setup: (props) => {
-    const { hasChildren, childClick } = useNav();
-    return { hasChildren, childClick };
+  setup: () => {
+    const {
+      hasChildren,
+      childClick,
+      clickChildIndex,
+      clickParentIndex,
+    } = useNav();
+    return { hasChildren, childClick, clickChildIndex, clickParentIndex };
   },
 });
 </script>
 <style scoped>
+.child {
+  padding: 5px;
+}
+.active {
+  background: antiquewhite;
+}
 </style>

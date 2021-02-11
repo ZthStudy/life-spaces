@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-01-07 09:56:08
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-10 17:44:35
+ * @LastEditTime: 2021-02-11 10:58:29
 -->
 <template>
   <ul class="parent">
@@ -18,7 +18,7 @@
       {{ item.label }}
       <svg-icon
         v-if="hasChildren(item)"
-        :icon-name="arrow"
+        :icon-name="item.fold ? 'icon-arrow-down' : 'icon-arrow-up'"
         class-name="arrow"
       ></svg-icon>
       <child-nav :parent="item"></child-nav>
@@ -35,13 +35,11 @@ export default defineComponent({
   components: { SvgIcon, ChildNav },
   props: [],
   setup: () => {
-    const arrow = ref("icon-arrow-up");
     const { parent, hasChildren, clickParentIndex, parentClick } = useNav();
     return {
       parent,
       clickParentIndex,
       parentClick,
-      arrow,
       hasChildren,
     };
   },
