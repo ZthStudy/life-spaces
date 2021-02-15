@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-01-07 09:56:08
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-11 10:58:29
+ * @LastEditTime: 2021-02-15 09:55:00
 -->
 <template>
   <ul class="parent">
@@ -26,7 +26,7 @@
   </ul>
 </template>
 <script lang='ts'>
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import SvgIcon from "@/components/SvgIcon.vue";
 import ChildNav from "./ChildNav.vue";
 import { useNav } from "./hooks";

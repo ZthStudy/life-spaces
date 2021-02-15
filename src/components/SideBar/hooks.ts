@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-02-10 16:47:26
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-11 10:59:32
+ * @LastEditTime: 2021-02-15 09:54:51
  */
 import { ref } from "vue";
 import { Nav } from "./type";
@@ -23,7 +23,6 @@ const parent = ref([
         icon: "icon-huolongguo",
       },
     ],
-    fold: true,
   },
   {
     index: 1,
@@ -45,7 +44,6 @@ const parent = ref([
         icon: "icon-huolongguo",
       },
     ],
-    fold: false,
   },
   {
     index: 3,
@@ -55,7 +53,7 @@ const parent = ref([
   },
 ]);
 
-const clickParentIndex = ref(0);
+const clickParentIndex = ref(-1);
 const clickChildIndex = ref(-1);
 
 const hasChildren = (item: Nav): boolean => {

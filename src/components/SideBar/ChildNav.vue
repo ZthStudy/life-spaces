@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-02-10 16:34:32
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-11 10:58:22
+ * @LastEditTime: 2021-02-15 09:58:12
 -->
 <template>
   <div v-if="hasChildren(parent)" class="pl10">
@@ -44,11 +44,15 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
+<style lang="scss" scoped>
+$antiquewhite: antiquewhite;
 .child {
   padding: 5px;
+  &:hover {
+    background: $antiquewhite;
+  }
 }
 .active {
-  background: antiquewhite;
+  background: $antiquewhite;
 }
 </style>
