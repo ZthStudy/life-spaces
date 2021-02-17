@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-02-10 16:34:32
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-15 09:58:12
+ * @LastEditTime: 2021-02-17 10:58:15
 -->
 <template>
   <div v-if="hasChildren(parent)" class="pl10">
@@ -17,7 +17,7 @@
           active:
             index === clickChildIndex && clickParentIndex === parent.index,
         }"
-        @click.stop="childClick(index, parent)"
+        @click.stop="childClick(index, parent, child)"
       >
         <svg-icon :icon-name="child.icon" class-name="mr5"></svg-icon>
         {{ child.label }}

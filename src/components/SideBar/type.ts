@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-02-10 17:00:12
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-11 10:57:42
+ * @LastEditTime: 2021-02-17 10:36:55
  */
 interface Nav {
   label: string;
@@ -12,6 +12,7 @@ interface Nav {
   children?: Nav[];
   fold?: boolean;
   index: number;
+  path?: string;
 }
 
 export { Nav };

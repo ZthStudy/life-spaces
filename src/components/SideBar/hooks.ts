@@ -4,10 +4,11 @@
  * @Author: zhangtianhou
  * @Date: 2021-02-10 16:47:26
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-15 09:54:51
+ * @LastEditTime: 2021-02-17 11:00:16
  */
 import { ref } from "vue";
 import { Nav } from "./type";
+import router from "@/router";
 const parent = ref([
   {
     index: 0,
@@ -17,10 +18,12 @@ const parent = ref([
       {
         label: "js",
         icon: "icon-shuimitao",
+        path: "/js",
       },
       {
         label: "css",
         icon: "icon-huolongguo",
+        path: "/css",
       },
     ],
   },
@@ -68,9 +71,10 @@ const parentClick = (item: Nav, index: number): void => {
   }
 };
 
-const childClick = (index: number, parent: Nav) => {
+const childClick = (index: number, parent: Nav, child: Nav) => {
   clickChildIndex.value = index;
   clickParentIndex.value = parent.index;
+  router.push(child.path as string);
 };
 
 const useNav = () => {
