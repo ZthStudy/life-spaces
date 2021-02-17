@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-01-13 10:10:09
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-01-13 10:44:04
+ * @LastEditTime: 2021-02-17 17:31:23
 -->
 <template>
   <svg :class="[className, 'icon']" aria-hidden="true">
@@ -20,7 +20,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    className: String,
+    className: [String, Array],
   },
   setup: () => {},
 });
