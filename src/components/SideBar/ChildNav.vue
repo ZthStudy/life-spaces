@@ -4,11 +4,11 @@
  * @Author: zhangtianhou
  * @Date: 2021-02-10 16:34:32
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-17 10:58:15
+ * @LastEditTime: 2021-02-17 17:04:39
 -->
 <template>
   <div v-if="hasChildren(parent)" class="pl10">
-    <ul v-show="parent.fold">
+    <ul :class="parent.fold ? 'slide-out' : 'slide-in'" class="child-panel">
       <li
         v-for="(child, index) in parent.children"
         :key="child.label"
@@ -54,5 +54,16 @@ $antiquewhite: antiquewhite;
 }
 .active {
   background: $antiquewhite;
+}
+.child-panel {
+  max-height: 0;
+  overflow: hidden;
+}
+.slide-in {
+  transition: max-height 0.15s ease-out;
+}
+.slide-out {
+  max-height: 200px;
+  transition: max-height 0.25s ease-in;
 }
 </style>

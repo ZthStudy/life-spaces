@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-01-07 09:56:08
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-15 09:55:00
+ * @LastEditTime: 2021-02-17 17:18:30
 -->
 <template>
   <ul class="parent">
@@ -18,8 +18,8 @@
       {{ item.label }}
       <svg-icon
         v-if="hasChildren(item)"
-        :icon-name="item.fold ? 'icon-arrow-down' : 'icon-arrow-up'"
-        class-name="arrow"
+        icon-name="icon-arrow-up"
+        :class-name="[item.fold ? 'down' : 'up', 'arrow']"
       ></svg-icon>
       <child-nav :parent="item"></child-nav>
     </li>
@@ -58,9 +58,6 @@ ul.parent {
     &:hover {
       background: $hover;
     }
-    &:visited {
-      background: $hover;
-    }
     .icon {
       font-size: 16px;
       vertical-align: middle;
@@ -68,6 +65,13 @@ ul.parent {
     }
     .icon.arrow {
       float: right;
+      transition: transform 0.25s ease-in;
+    }
+    .arrow.up {
+      transform: rotate(360deg);
+    }
+    .arrow.down {
+      transform: rotate(180deg);
     }
   }
   li.active {
