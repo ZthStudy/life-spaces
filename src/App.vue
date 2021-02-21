@@ -34,7 +34,7 @@ export default defineComponent({
 
 <style scoped>
 .container {
-  width: 1190px;
+  width: 73%;
   margin: 0 auto;
   display: flex;
 }

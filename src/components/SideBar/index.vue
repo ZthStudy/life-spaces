@@ -16,9 +16,8 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 aside {
-  width: 20%;
+  width: 240px;
   h1 {
-    width: 100%;
     padding: 20px 0;
     text-align: center;
     background: $textture;
