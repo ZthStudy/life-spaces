@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-02-10 16:47:26
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-02-17 11:00:16
+ * @LastEditTime: 2021-03-03 15:14:52
  */
 import { ref } from "vue";
 import { Nav } from "./type";
@@ -50,8 +50,9 @@ const parent = ref([
   },
   {
     index: 3,
-    label: "Note",
+    label: "Write",
     icon: "icon-ningmeng",
+    path: "/write",
     children: [],
   },
 ]);
@@ -68,6 +69,9 @@ const parentClick = (item: Nav, index: number): void => {
   if (hasChildren(item)) {
     const curfold = !!item.fold;
     item.fold = !curfold;
+  }
+  if (item.path) {
+    router.push(item.path as string);
   }
 };
 
