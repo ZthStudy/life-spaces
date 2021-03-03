@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-03 15:09:55
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-03 15:47:23
+ * @LastEditTime: 2021-03-03 17:25:39
 -->
 <template>
   <a-space>
@@ -29,10 +29,11 @@
 </template>
 <script lang='ts'>
 import { defineComponent, onMounted, ref } from "vue";
+import { Input, Select, Button } from "ant-design-vue";
 import E from "wangeditor";
 export default defineComponent({
   name: "Write",
-  components: {},
+  components: { Input, Select, Button },
   props: [],
   setup: () => {
     let editor: any = null;
