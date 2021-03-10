@@ -1,14 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <!-- <link rel="icon" href="/favicon.ico" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Life spaces</title>
+  <title>Life Spaces</title>
 </head>
+
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <style>
+      .loading_panel {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        top: calc(50% - 30px);
+        left: calc(50% - 30px);
+        transform: rotate(45deg);
+        animation: rotate 1.2s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes show {
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .loading_panel i {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        transform: scale(0.75);
+        position: absolute;
+        background: #0065cc;
+        opacity: .5;
+        animation: show 1s linear infinite alternate;
+      }
+
+      .loading_panel i:nth-child(1) {
+        top: 0;
+        left: 0;
+
+      }
+
+      .loading_panel i:nth-child(2) {
+        top: 0;
+        right: 0;
+        animation-delay: 0.4s;
+      }
+
+      .loading_panel i:nth-child(3) {
+        bottom: 0;
+        left: 0;
+        animation-delay: 0.8s;
+      }
+
+      .loading_panel i:nth-child(4) {
+        bottom: 0;
+        right: 0;
+        animation-delay: 1.2s;
+      }
+    </style>
+    <span class="loading_panel"><i></i><i></i><i></i><i></i></span>
+  </div>
   <script type="module" src="/src/main.ts"></script>
   <script src="//at.alicdn.com/t/font_2315855_kqodn8n3ms.js"></script>
 </body>
+
 </html>

@@ -2,6 +2,7 @@ import 'windi.css';
 
 import { createApp } from "vue";
 import APP from "./APP.vue";
+
 import router from "./router";
 import "./styles/index.scss";
 import Antd from "ant-design-vue";

@@ -1,5 +1,5 @@
 <template>
-  <div class="headband"></div>
+  <div class="headband px-1rem"></div>
   <div class="container">
     <side-bar></side-bar>
     <content></content>
