@@ -4,23 +4,19 @@
  * @Author: zhangtianhou
  * @Date: 2021-02-15 11:21:05
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-10 17:09:00
+ * @LastEditTime: 2021-03-11 14:03:29
  */
+import type { RouteRecordRaw } from "vue-router";
 import type { App } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
-import JsList from "@/components/Main/JsList/index.vue";
-import CssList from "@/components/Main/CssList/index.vue";
-import Write from "@/components/Main/Write/index.vue";
+import { basicRoutes } from "./routes";
 
-const routes = [
-  { path: "/js", component: JsList },
-  { path: "/css", component: CssList },
-  { path: "/write", component: Write },
-];
+
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes: basicRoutes as RouteRecordRaw[],
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 });
 
 const setupRouter = (app: App<Element>) => {
