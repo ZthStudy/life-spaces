@@ -11,13 +11,20 @@
 <body>
   <div id="app">
     <style>
-      .loading_panel {
+      .app-loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .app-loading-dots {
         display: inline-block;
         width: 48px;
         height: 48px;
-        position: absolute;
-        top: calc(50% - 30px);
-        left: calc(50% - 30px);
         transform: rotate(45deg);
         animation: rotate 1.2s linear infinite;
       }
@@ -38,7 +45,7 @@
         }
       }
 
-      .loading_panel i {
+      .app-loading-dots i {
         width: 20px;
         height: 20px;
         border-radius: 50%;
@@ -49,31 +56,40 @@
         animation: show 1s linear infinite alternate;
       }
 
-      .loading_panel i:nth-child(1) {
+      .app-loading-dots i:nth-child(1) {
         top: 0;
         left: 0;
 
       }
 
-      .loading_panel i:nth-child(2) {
+      .app-loading-dots i:nth-child(2) {
         top: 0;
         right: 0;
         animation-delay: 0.4s;
       }
 
-      .loading_panel i:nth-child(3) {
+      .app-loading-dots i:nth-child(3) {
         bottom: 0;
         left: 0;
         animation-delay: 0.8s;
       }
 
-      .loading_panel i:nth-child(4) {
+      .app-loading-dots i:nth-child(4) {
         bottom: 0;
         right: 0;
         animation-delay: 1.2s;
       }
+
+      .app-loading-title {
+        margin-top: 30px;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.85);
+      }
     </style>
-    <span class="loading_panel"><i></i><i></i><i></i><i></i></span>
+    <div class="app-loading">
+      <span class="app-loading-dots"><i></i><i></i><i></i><i></i></span>
+      <div class="app-loading-title">Life Spaces</div>
+    </div>
   </div>
   <script type="module" src="/src/main.ts"></script>
   <script src="//at.alicdn.com/t/font_2315855_kqodn8n3ms.js"></script>
