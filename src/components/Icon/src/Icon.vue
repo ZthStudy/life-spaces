@@ -4,24 +4,45 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-21 15:03:40
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-21 15:03:40
+ * @LastEditTime: 2021-03-23 16:46:18
 -->
 <template>
   <span
     ref="elRef"
     :class="[$attrs.class, 'app-iconify anticon']"
-    :style="getWrapStyle"
   ></span>
 </template>
 <script lang='ts'>
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref, unref } from "vue";
+import { string } from "vue-types";
+import Iconify from "@purge-icons/generated";
 export default defineComponent({
   name: "",
   components: {},
   props: {
-    
+    icon: string().isRequired,
   },
-  setup: () => {},
+  setup: (props) => {
+    const elRef = ref<ElRef>(null);
+
+    const update = () => {
+      const el = unref(elRef);
+      if (!el) return;
+      const icon = props.icon;
+      console.log({ icon });
+
+      if (!icon) return;
+      const svg = Iconify.renderSVG(icon, {});
+      if (svg) {
+        el.textContent = "";
+        el.appendChild(svg);
+      }
+    };
+
+    onMounted(update);
+
+    return { elRef };
+  },
 });
 </script>
 <style scoped>

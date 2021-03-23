@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-19 16:30:20
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-21 23:09:25
+ * @LastEditTime: 2021-03-23 15:16:45
 -->
 <template>
   <dropdown
@@ -19,10 +19,10 @@
 import { defineComponent } from "vue";
 import { Dropdown } from "@/components/Dropdown";
 import { localeList } from "@/settings/localeSetting";
-// import { Icon } from "/@/components/Icon";
+import { Icon } from "@/components/Icon";
 export default defineComponent({
   name: "",
-  components: { Dropdown },
+  components: { Dropdown,Icon },
   props: [],
   setup: () => {
     return { localeList };
