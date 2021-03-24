@@ -1,11 +1,13 @@
+import "@/design/index.scss";
 import "windi.css";
+// import "./styles/index.scss";
 
 import { createApp } from "vue";
 import APP from "./APP.vue";
 
 import { setupRouter } from "@/router";
 
-import "./styles/index.scss";
+
 // import Antd from "ant-design-vue";
 // import "ant-design-vue/dist/antd.css";
 

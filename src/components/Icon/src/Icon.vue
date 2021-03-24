@@ -4,12 +4,12 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-21 15:03:40
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-23 16:46:18
+ * @LastEditTime: 2021-03-24 10:04:44
 -->
 <template>
   <span
     ref="elRef"
-    :class="[$attrs.class, 'app-iconify anticon']"
+    :class="[$attrs.class]"
   ></span>
 </template>
 <script lang='ts'>
@@ -29,8 +29,6 @@ export default defineComponent({
       const el = unref(elRef);
       if (!el) return;
       const icon = props.icon;
-      console.log({ icon });
-
       if (!icon) return;
       const svg = Iconify.renderSVG(icon, {});
       if (svg) {
