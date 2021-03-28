@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-19 16:30:20
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-23 15:16:45
+ * @LastEditTime: 2021-03-28 14:36:56
 -->
 <template>
   <dropdown
@@ -12,20 +12,23 @@
     :trigger="['click']"
     :dropMenuList="localeList"
   >
-    <Icon icon="ion:language" />
+    <span>
+      <Icon :icon="translateIcon" />
+    </span>
   </dropdown>
 </template>
 <script lang='ts'>
 import { defineComponent } from "vue";
 import { Dropdown } from "@/components/Dropdown";
 import { localeList } from "@/settings/localeSetting";
-import { Icon } from "@/components/Icon";
+import { Icon } from "@iconify/vue";
+import translateIcon from "@iconify-icons/mdi/translate";
 export default defineComponent({
   name: "",
-  components: { Dropdown,Icon },
+  components: { Dropdown, Icon },
   props: [],
   setup: () => {
-    return { localeList };
+    return { localeList, translateIcon };
   },
 });
 </script>
