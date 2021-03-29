@@ -4,13 +4,13 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-20 11:16:12
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-21 14:15:50
+ * @LastEditTime: 2021-03-29 09:35:16
 -->
 <template>
   <a-dropdown v-bind="$attrs">
     <slot></slot>
     <template #overlay>
-      <a-menu>
+      <a-menu :selectedKeys="selectedKeys">
         <a-menu-item
           v-for="item in dropMenuList"
           :key="`${item.event}`"
@@ -38,6 +38,11 @@ export default defineComponent({
   props: {
     dropMenuList: {
       type: Array as PropType<DropMenu[]>,
+      default: () => [],
+    },
+    selectedKeys: {
+      type: Array as PropType<string[]>,
+      default: () => [],
     },
   },
   setup: () => {},

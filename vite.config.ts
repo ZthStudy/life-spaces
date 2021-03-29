@@ -20,6 +20,9 @@ export default defineConfig({
       scss: {
         additionalData: defineColors,
       },
+      less: {
+        javascriptEnabled: true,
+      },
     },
   },
   server: {

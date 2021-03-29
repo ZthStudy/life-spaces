@@ -4,13 +4,14 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-19 16:30:20
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-28 14:36:56
+ * @LastEditTime: 2021-03-29 09:27:49
 -->
 <template>
   <dropdown
     placement="bottomCenter"
     :trigger="['click']"
     :dropMenuList="localeList"
+    :selectedKeys="['zh_CN']"
   >
     <span>
       <Icon :icon="translateIcon" />
