@@ -1,4 +1,4 @@
-import "@/design/index.scss";
+import "@/design/index.less";
 import "windi.css";
 // import "./styles/index.scss";
 

@@ -4,16 +4,20 @@
     <side-bar></side-bar>
     <content></content>
   </div> -->
-  <router-view></router-view>
+  <AppProvider>
+    <router-view></router-view>
+  </AppProvider>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { AppProvider } from "@/components/Application";
 import SideBar from "./components/SideBar/index.vue";
 import Content from "./components/Main/index.vue";
 export default defineComponent({
   name: "App",
   components: {
+    AppProvider,
     SideBar,
     Content,
   },

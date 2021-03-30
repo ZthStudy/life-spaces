@@ -4,10 +4,10 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-11 13:54:57
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-29 15:26:38
+ * @LastEditTime: 2021-03-30 17:31:34
 -->
 <template>
-  <div class="relative px-4">
+  <div class="relative px-4" :class="prefixCls">
     <AppLocalePicker
       class="absolute top-4 right-4 enter-x xl:text-gray-600"
     ></AppLocalePicker>
@@ -18,6 +18,7 @@
 import { defineComponent } from "vue";
 import { AppLocalePicker } from "@/components/Application";
 import { AppLogo } from "@/components/Application";
+import { useDesign } from "@/hooks/web/useDesign";
 export default defineComponent({
   name: "Login",
   components: {
@@ -25,10 +26,22 @@ export default defineComponent({
     AppLogo,
   },
   props: [],
-  setup: () => {},
+  setup: () => {
+    const { prefixCls } = useDesign("login");
+    console.log({ prefixCls });
+    return { prefixCls };
+  },
 });
 </script>
-<style>
+<style lang="less">
+// $login: "tianhou-login";
+
+.tianhou-login {
+  img {
+    width: 32px;
+    color: @red;
+  }
+}
 .enter-x {
   transform: translateX(50px);
   opacity: 0;
