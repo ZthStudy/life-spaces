@@ -4,11 +4,11 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-29 09:56:15
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-29 10:13:10
+ * @LastEditTime: 2021-03-31 11:28:09
 -->
 <template>
-  <div>
-    <img src="../../../assets/images/logo.png" />
+  <div class="flex items-center">
+    <img class="mr-5px" src="../../../assets/images/logo.png" />
     <span>tianhou life</span>
   </div>
 </template>

@@ -21,6 +21,11 @@ export default defineConfig({
         additionalData: defineColors,
       },
       less: {
+        modifyVars: {
+          // Used for global import to avoid the need to import each style file separately
+          // reference:  Avoid repeated references
+          hack: `true; @import (reference) "${resolve('src/design/config.less')}";`,
+        },
         javascriptEnabled: true,
       },
     },

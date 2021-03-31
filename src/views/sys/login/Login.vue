@@ -4,7 +4,7 @@
  * @Author: zhangtianhou
  * @Date: 2021-03-11 13:54:57
  * @LastEditors: zhangtianhou
- * @LastEditTime: 2021-03-30 17:31:34
+ * @LastEditTime: 2021-03-31 10:44:33
 -->
 <template>
   <div class="relative px-4" :class="prefixCls">
@@ -34,12 +34,11 @@ export default defineComponent({
 });
 </script>
 <style lang="less">
-// $login: "tianhou-login";
+@prefix-cls: ~"@{namespace}-login";
 
-.tianhou-login {
+.@{prefix-cls} {
   img {
     width: 32px;
-    color: @red;
   }
 }
 .enter-x {
